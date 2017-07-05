@@ -18,3 +18,8 @@ Outbound WebHook for Jenkins build events
 ./gradle server
 
 Visit http://localhost:8080
+
+
+## Admin user for testing
+
+admin/admin
