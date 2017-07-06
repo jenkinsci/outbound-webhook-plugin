@@ -30,3 +30,9 @@ I use the following credential for testing:
 admin/admin
 
 Of course you don't have to copy my example.
+
+
+## todo
+
+- Rename to `outbound-webhook-plugin`
+- Rename package
