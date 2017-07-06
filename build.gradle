@@ -11,8 +11,8 @@ jenkinsPlugin {
     coreVersion = "2.60.1"
     displayName = "Outbound WebHook for Jenkins build events"
     url = "http://wiki.jenkins-ci.org/display/JENKINS/WebHookPlugin"
-    gitHubUrl = "https://github.com/tylerlong/jenkins-webhook-plugin"
-    shortName = "jenkins-webhook-plugin"
+    gitHubUrl = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
+    shortName = "outbound-webhook-plugin"
     developers {
         developer {
             id "tylerlong"
