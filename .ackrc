@@ -1,0 +1,5 @@
+--ignore-dir=bin
+--ignore-dir=build
+--ignore-dir=.settings
+--ignore-dir=.gradle
+--ignore-dir=work
