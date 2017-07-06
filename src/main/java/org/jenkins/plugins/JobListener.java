@@ -8,9 +8,6 @@ import hudson.model.listeners.RunListener;
 
 import javax.annotation.Nonnull;
 
-/**
- * Created by Marvin on 16/10/7.
- */
 @Extension
 public class JobListener extends RunListener<AbstractBuild> {
 
