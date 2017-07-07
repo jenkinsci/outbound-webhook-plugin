@@ -8,14 +8,14 @@ import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Publisher;
 import hudson.model.AbstractProject;
 
-public class GlipNotifier extends Notifier {
+public class WebHookPublisher extends Notifier {
     public String webHookUrl;
     public Boolean onStart;
     public Boolean onSuccess;
     public Boolean onFailed;
 
     @DataBoundConstructor
-    public GlipNotifier(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailed) {
+    public WebHookPublisher(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailed) {
         super();
         this.webHookUrl = webHookUrl;
         this.onStart = onStart;
@@ -29,12 +29,12 @@ public class GlipNotifier extends Notifier {
     }
 
     @Override
-    public GlipNotifierDescriptor getDescriptor() {
-        return (GlipNotifierDescriptor) super.getDescriptor();
+    public WebHookPublisherDescriptor getDescriptor() {
+        return (WebHookPublisherDescriptor) super.getDescriptor();
     }
 
     @Extension
-    public static class GlipNotifierDescriptor extends BuildStepDescriptor<Publisher> {
+    public static class WebHookPublisherDescriptor extends BuildStepDescriptor<Publisher> {
 
         @Override
         public boolean isApplicable(Class<? extends AbstractProject> jobType) {
