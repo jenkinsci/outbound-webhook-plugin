@@ -7,6 +7,10 @@ import hudson.Extension;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Publisher;
 import hudson.model.AbstractProject;
+import hudson.Launcher;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import java.io.IOException;
 
 public class WebHookPublisher extends Notifier {
     public String webHookUrl;
@@ -26,6 +30,11 @@ public class WebHookPublisher extends Notifier {
     @Override
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
+    }
+
+    @Override
+    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
+        return true;
     }
 
     @Override
