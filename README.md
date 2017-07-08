@@ -5,7 +5,13 @@ Outbound WebHook for Jenkins build events
 
 ## Configration
 
-![](config.png)
+Configure your Jenkins URL in `Jenkins > Configuration` section:
+
+![](config1.png)
+
+Add `Outbound Webhook notification` to `Post-build Actions`:
+
+![](config2.png)
 
 
 ## Sample payload
@@ -13,11 +19,13 @@ Outbound WebHook for Jenkins build events
 ```json
 {
   "buildName": "#16",
-  "buildUrl": "http://example.com/job/test%20job/16/",
+  "buildUrl": "http://my-jenkins-url.com/job/test%20job/16/",
   "event": "success",
   "projectName": "test job"
 }
 ```
+
+`event` has three possible values: `start`, `success`, `failure`.
 
 
 ## Compile
