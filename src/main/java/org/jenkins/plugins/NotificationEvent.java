@@ -7,6 +7,7 @@ public class NotificationEvent {
         this.buildUrl = buildUrl;
         this.event = event;
     }
+
     public String projectName;
     public String buildName;
     public String buildUrl;

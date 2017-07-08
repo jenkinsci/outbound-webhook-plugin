@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     compile 'com.alibaba:fastjson:1.2.34'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }
 
 group 'org.jenkins-ci.plugins'
