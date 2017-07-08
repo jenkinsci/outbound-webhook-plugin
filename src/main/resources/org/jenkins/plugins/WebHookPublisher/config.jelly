@@ -9,7 +9,7 @@
   <f:entry title="Send notificatio on success">
       <f:checkbox name="onSuccess" value="true" checked="${instance.onSuccess}"/>
   </f:entry>
-  <f:entry title="Send notification on failed">
-      <f:checkbox name="onFailed" value="true" checked="${instance.onFailed}"/>
+  <f:entry title="Send notification on failure">
+      <f:checkbox name="onFailure" value="true" checked="${instance.onFailure}"/>
   </f:entry>
 </j:jelly>

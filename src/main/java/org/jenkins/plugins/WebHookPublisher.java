@@ -16,15 +16,15 @@ public class WebHookPublisher extends Notifier {
     public String webHookUrl;
     public Boolean onStart;
     public Boolean onSuccess;
-    public Boolean onFailed;
+    public Boolean onFailure;
 
     @DataBoundConstructor
-    public WebHookPublisher(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailed) {
+    public WebHookPublisher(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailure) {
         super();
         this.webHookUrl = webHookUrl;
         this.onStart = onStart;
         this.onSuccess = onSuccess;
-        this.onFailed = onFailed;
+        this.onFailure = onFailure;
     }
 
     @Override

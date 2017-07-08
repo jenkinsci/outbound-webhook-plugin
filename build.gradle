@@ -3,6 +3,14 @@ plugins {
     id 'org.jenkins-ci.jpi' version '0.22.0'
 }
 
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.alibaba:fastjson:1.2.34'
+}
+
 group 'org.jenkins-ci.plugins'
 version '0.1.0'
 description 'Outbound WebHook for Jenkins build events'
