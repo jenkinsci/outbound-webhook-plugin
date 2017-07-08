@@ -3,25 +3,16 @@ plugins {
     id 'org.jenkins-ci.jpi' version '0.22.0'
 }
 
-repositories {
-    jcenter()
-}
-
-dependencies {
-    compile 'com.alibaba:fastjson:1.2.34'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-}
-
 group 'org.jenkins-ci.plugins'
 version '0.1.0'
 description 'Outbound WebHook for Jenkins build events'
 
 jenkinsPlugin {
-    coreVersion = "2.60.1"
+    coreVersion = "2.0"
     displayName = "Outbound WebHook for Jenkins build events"
-    url = "http://wiki.jenkins-ci.org/display/JENKINS/WebHookPlugin"
+    url = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
     gitHubUrl = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
-    shortName = "outbound-webhook-plugin"
+    shortName = "outbound-webhook"
     developers {
         developer {
             id "tylerlong"
@@ -29,4 +20,13 @@ jenkinsPlugin {
             email "tyler4long@gmail.com"
         }
     }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.alibaba:fastjson:1.2.34'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }
