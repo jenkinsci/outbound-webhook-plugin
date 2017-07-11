@@ -9,7 +9,7 @@ description 'Outbound WebHook for Jenkins build events'
 
 jenkinsPlugin {
     coreVersion = "2.0"
-    displayName = "Outbound WebHook for Jenkins build events"
+    displayName = "Outbound WebHook for build events"
     url = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
     gitHubUrl = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
     shortName = "outbound-webhook"
