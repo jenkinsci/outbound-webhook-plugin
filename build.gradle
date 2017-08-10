@@ -4,14 +4,14 @@ plugins {
 }
 
 group 'org.jenkins-ci.plugins'
-version '0.1.2'
+version '0.1.3'
 description 'Outbound WebHook for Jenkins build events'
 
 jenkinsPlugin {
     coreVersion = "2.0"
     displayName = "Outbound WebHook for build events"
-    url = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
-    gitHubUrl = "https://github.com/tylerlong/jenkins-outbound-webhook-plugin"
+    url = "https://github.com/jenkinsci/outbound-webhook-plugin"
+    gitHubUrl = "https://github.com/jenkinsci/outbound-webhook-plugin"
     shortName = "outbound-webhook"
     developers {
         developer {
