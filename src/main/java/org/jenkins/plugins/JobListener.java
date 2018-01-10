@@ -10,11 +10,16 @@ import okhttp3.*;
 
 import javax.annotation.Nonnull;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Extension
 public class JobListener extends RunListener<AbstractBuild> {
 
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
+    
+    private static final Logger log = LoggerFactory.getLogger(JobListener.class);
 
     public JobListener() {
         super(AbstractBuild.class);
@@ -75,7 +80,9 @@ public class JobListener extends RunListener<AbstractBuild> {
         Request request = new Request.Builder().url(url).post(body).build();
         try {
             Response response = client.newCall(request).execute();
+            log.debug("Invocation of webhook {} successful", url);
         } catch (Exception e) {
+        	log.info("Invocation of webhook {} failed", url, e);
         }
     }
 }
