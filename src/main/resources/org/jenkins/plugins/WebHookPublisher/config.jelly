@@ -6,7 +6,7 @@
   <f:entry title="Send notification on start">
       <f:checkbox name="onStart" value="true" checked="${instance.onStart}"/>
   </f:entry>
-  <f:entry title="Send notificatio on success">
+  <f:entry title="Send notification on success">
       <f:checkbox name="onSuccess" value="true" checked="${instance.onSuccess}"/>
   </f:entry>
   <f:entry title="Send notification on failure">
