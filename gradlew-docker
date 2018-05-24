@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo docker run --rm -ti \
+  -p 8080:8080 \
+  -e JAVA_HOME=/docker-java-home \
+  -v $(pwd):/home/gradle/project \
+  -v $(pwd)/.gradle:/home/gradle/.gradle \
+  -w /home/gradle/project \
+  gradle:jdk8 ./gradlew $@
+
+exit $?

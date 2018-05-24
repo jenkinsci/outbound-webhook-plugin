@@ -3,7 +3,7 @@
 Outbound WebHook for Jenkins build events
 
 
-## Configration
+## Configuration
 
 Configure your Jenkins URL in `Jenkins > Configuration` section:
 
@@ -30,31 +30,42 @@ Add `Outbound Webhook notification` to `Post-build Actions`:
 
 ## Compile
 
+```bash
 ./gradlew build
+
+# or within a docker image:
+./gradlew-docker build
+```
 
 
 ## Test
 
+```bash
 ./gradlew test
+
+# or within a docker image:
+./gradlew-docker test
+```
 
 
 ## Run server
 
+```bash
 ./gradlew server
+
+# or within a docker image, port 8080 is forwarded to the docker host:
+./gradlew-docker server
+```
 
 Visit http://localhost:8080
 
-The frist time you visit it, you are required to go through the setup process.
+The first time you visit it, you are required to go through the setup process.
 Please **don't install** any third-party plugins. This plugin we currently working on will be installed by default.
 
 
 ## Admin user
 
-I use the following credential for testing:
-
-```
-admin/admin
-```
+I use the following credential for testing: `admin/admin`
 
 Of course you don't have to copy my example.
 
@@ -72,4 +83,11 @@ password=password
 
 Note: The credentials are from https://accounts.jenkins.io/.
 
-Run `./gradlew clean publish`.
+Run:
+
+```bash
+./gradlew clean publish
+
+# or within a docker image:
+./gradlew-docker clean publish
+```
