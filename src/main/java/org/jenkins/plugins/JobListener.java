@@ -78,11 +78,16 @@ public class JobListener extends RunListener<AbstractBuild> {
         String jsonString = JSON.toJSONString(object);
         RequestBody body = RequestBody.create(JSON_MEDIA_TYPE, jsonString);
         Request request = new Request.Builder().url(url).post(body).build();
+        Response response = null;
         try {
-            Response response = client.newCall(request).execute();
+            response = client.newCall(request).execute();
             log.debug("Invocation of webhook {} successful", url);
         } catch (Exception e) {
-        	log.info("Invocation of webhook {} failed", url, e);
+            log.info("Invocation of webhook {} failed", url, e);
+        } finally {
+            if (response != null) {
+                response.close();
+            }
         }
     }
 }
