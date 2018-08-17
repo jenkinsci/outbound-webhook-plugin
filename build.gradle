@@ -32,4 +32,7 @@ repositories {
 dependencies {
     compile 'com.alibaba:fastjson:1.2.34'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.6'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
 }

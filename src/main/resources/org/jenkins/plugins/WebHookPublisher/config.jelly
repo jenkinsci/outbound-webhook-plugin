@@ -12,4 +12,7 @@
   <f:entry title="Send notification on failure">
       <f:checkbox name="onFailure" value="true" checked="${instance.onFailure}"/>
   </f:entry>
+  <f:entry title="Post as JSON">
+      <f:checkbox name="publishedAsJson" value="true" checked="${instance.publishedAsJson}"/>
+  </f:entry>
 </j:jelly>
