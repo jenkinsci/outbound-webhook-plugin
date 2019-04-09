@@ -17,14 +17,16 @@ public class WebHookPublisher extends Notifier {
     public Boolean onStart;
     public Boolean onSuccess;
     public Boolean onFailure;
+    public Boolean onUnstable;
 
     @DataBoundConstructor
-    public WebHookPublisher(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailure) {
+    public WebHookPublisher(String webHookUrl, boolean onStart, boolean onSuccess, boolean onFailure, boolean onUnstable) {
         super();
         this.webHookUrl = webHookUrl;
         this.onStart = onStart;
         this.onSuccess = onSuccess;
         this.onFailure = onFailure;
+        this.onUnstable = onUnstable;
     }
 
     @Override

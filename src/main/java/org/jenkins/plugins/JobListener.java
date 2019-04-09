@@ -63,6 +63,10 @@ public class JobListener extends RunListener<AbstractBuild> {
             event.event = "failure";
             httpPost(webHookUrl, event);
         }
+        if (publisher.onUnstable && result.equals(Result.UNSTABLE)) {
+            event.event = "unstable";
+            httpPost(webHookUrl, event);
+        }
     }
 
     private WebHookPublisher GetWebHookPublisher(AbstractBuild build) {
