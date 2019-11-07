@@ -36,7 +36,8 @@ public class JobListener extends RunListener<AbstractBuild> {
         String buildUrl = build.getAbsoluteUrl();
         String projectName = build.getProject().getDisplayName();
         String buildName = build.getDisplayName();
-        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, "start");
+        String buildVars = build.getBuildVariables().toString();
+        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, "start");
         httpPost(webHookUrl, event);
     }
 
@@ -54,7 +55,8 @@ public class JobListener extends RunListener<AbstractBuild> {
         String buildUrl = build.getAbsoluteUrl();
         String projectName = build.getProject().getDisplayName();
         String buildName = build.getDisplayName();
-        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, "");
+        String buildVars = build.getBuildVariables().toString();
+        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, "");
         if (publisher.onSuccess && result.equals(Result.SUCCESS)) {
             event.event = "success";
             httpPost(webHookUrl, event);
