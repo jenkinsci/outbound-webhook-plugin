@@ -21,11 +21,12 @@ Add `Outbound Webhook notification` to `Post-build Actions`:
   "buildName": "#16",
   "buildUrl": "http://my-jenkins-url.com/job/test%20job/16/",
   "event": "success",
-  "projectName": "test job"
+  "projectName": "test job",
+  "buildVars": "..."
 }
 ```
 
-`event` has three possible values: `start`, `success`, `failure`.
+`event` has four possible values: `start`, `success`, `failure`, `unstable`.
 
 
 ## Compile

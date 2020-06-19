@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'org.jenkins-ci.jpi' version '0.22.0'
+    id 'org.jenkins-ci.jpi' version '0.39.0'
 }
 
 group 'org.jenkins-ci.plugins'
-version '0.2.0'
+version '0.3.0'
 description 'Outbound WebHook for Jenkins build events'
 
 jenkinsPlugin {
-    coreVersion = "2.5"
+    coreVersion = "2.200"
     displayName = "Outbound WebHook for build events"
     url = "https://github.com/jenkinsci/outbound-webhook-plugin"
     gitHubUrl = "https://github.com/jenkinsci/outbound-webhook-plugin"
@@ -30,6 +30,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.alibaba:fastjson:1.2.34'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.alibaba:fastjson:1.2.71'
+    compile 'com.squareup.okhttp3:okhttp:4.7.2'
 }
