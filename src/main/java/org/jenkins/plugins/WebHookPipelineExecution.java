@@ -23,8 +23,9 @@ public class WebHookPipelineExecution extends SynchronousNonBlockingStepExecutio
         String buildUrl = run.getAbsoluteUrl();
         String projectName = run.getParent().getDisplayName();
         String buildName = run.getDisplayName();
+        int buildNumber = run.getNumber();
         String buildVars = envVars.toString();
-        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, NotificationEvent.EventType.PIPELINE);
+        NotificationEvent event = new NotificationEvent(projectName, buildName, buildNumber, buildUrl, buildVars, NotificationEvent.EventType.PIPELINE);
         JobListener.httpPost(webHookUrl, event);
         return null;
     }

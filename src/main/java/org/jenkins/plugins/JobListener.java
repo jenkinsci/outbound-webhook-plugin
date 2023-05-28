@@ -25,7 +25,6 @@ public class JobListener extends RunListener<AbstractBuild> {
         super(AbstractBuild.class);
     }
 
-    @Nullable
     public static void httpPost(String url, Object object) {
         String jsonString = JSON.toJSONString(object, SerializerFeature.WriteEnumUsingToString);
         RequestBody body = RequestBody.create(jsonString, JSON_MEDIA_TYPE);
@@ -50,8 +49,9 @@ public class JobListener extends RunListener<AbstractBuild> {
         String buildUrl = build.getAbsoluteUrl();
         String projectName = build.getProject().getDisplayName();
         String buildName = build.getDisplayName();
+        int buildNumber = build.getNumber();
         String buildVars = build.getBuildVariables().toString();
-        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, NotificationEvent.EventType.START);
+        NotificationEvent event = new NotificationEvent(projectName, buildName, buildNumber, buildUrl, buildVars, NotificationEvent.EventType.START);
         httpPost(webHookUrl, event);
     }
 
@@ -69,8 +69,9 @@ public class JobListener extends RunListener<AbstractBuild> {
         String buildUrl = build.getAbsoluteUrl();
         String projectName = build.getProject().getDisplayName();
         String buildName = build.getDisplayName();
+        int buildNumber = build.getNumber();
         String buildVars = build.getBuildVariables().toString();
-        NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, null);
+        NotificationEvent event = new NotificationEvent(projectName, buildName, buildNumber, buildUrl, buildVars, null);
         if (publisher.onSuccess && result.equals(Result.SUCCESS)) {
             event.event = NotificationEvent.EventType.SUCCESS;
             httpPost(webHookUrl, event);
