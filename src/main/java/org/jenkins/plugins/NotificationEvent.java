@@ -1,7 +1,7 @@
 package org.jenkins.plugins;
 
 public class NotificationEvent {
-    public NotificationEvent(String projectName, String buildName, String buildUrl, String buildVars, String event) {
+    public NotificationEvent(String projectName, String buildName, String buildUrl, String buildVars, EventType event) {
         this.projectName = projectName;
         this.buildName = buildName;
         this.buildUrl = buildUrl;
@@ -13,5 +13,24 @@ public class NotificationEvent {
     public String buildName;
     public String buildUrl;
     public String buildVars;
-    public String event;
+    public EventType event;
+
+    public enum EventType {
+        START("start"),
+        SUCCESS("success"),
+        FAILURE("failure"),
+        UNSTABLE("unstable"),
+        PIPELINE("pipeline");
+
+        private final String value;
+
+        EventType(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
 }
