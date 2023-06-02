@@ -47,7 +47,7 @@ public class JobListener extends RunListener<AbstractBuild> {
         }
         String webHookUrl = publisher.webHookUrl;
         String buildUrl = build.getAbsoluteUrl();
-        String projectName = build.getProject().getDisplayName();
+        String projectName = build.getProject().getFullName();
         String buildName = build.getDisplayName();
         int buildNumber = build.getNumber();
         String buildVars = build.getBuildVariables().toString();
@@ -67,7 +67,7 @@ public class JobListener extends RunListener<AbstractBuild> {
         }
         String webHookUrl = publisher.webHookUrl;
         String buildUrl = build.getAbsoluteUrl();
-        String projectName = build.getProject().getDisplayName();
+        String projectName = build.getProject().getFullName();
         String buildName = build.getDisplayName();
         int buildNumber = build.getNumber();
         String buildVars = build.getBuildVariables().toString();

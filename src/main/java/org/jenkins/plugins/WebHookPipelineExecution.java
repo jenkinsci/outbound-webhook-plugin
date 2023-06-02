@@ -21,7 +21,7 @@ public class WebHookPipelineExecution extends SynchronousNonBlockingStepExecutio
         if (run == null) throw new Exception("Run is null");
         if (envVars == null) throw new Exception("EnvVars is null");
         String buildUrl = run.getAbsoluteUrl();
-        String projectName = run.getParent().getDisplayName();
+        String projectName = run.getParent().getFullName();
         String buildName = run.getDisplayName();
         int buildNumber = run.getNumber();
         String buildVars = envVars.toString();
