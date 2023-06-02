@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'org.jenkins-ci.jpi' version '0.39.0'
+    id 'org.jenkins-ci.jpi' version '0.49.0'
 }
 
 group 'org.jenkins-ci.plugins'
-version '0.3.0'
+version '0.4.0'
 description 'Outbound WebHook for Jenkins build events'
 
 jenkinsPlugin {
-    coreVersion = "2.200"
+    jenkinsVersion = "2.387.3"
     displayName = "Outbound WebHook for build events"
     url = "https://github.com/jenkinsci/outbound-webhook-plugin"
     gitHubUrl = "https://github.com/jenkinsci/outbound-webhook-plugin"
@@ -23,13 +23,15 @@ jenkinsPlugin {
 }
 
 repositories {
-    maven { url 'http://bits.netbeans.org/maven2' }
-    maven { url 'http://repo.jenkins-ci.org/releases/' }
-    jcenter()
     mavenCentral()
+    maven { url 'https://repo.jenkins-ci.org/releases/' }
+    maven { url 'https://bits.netbeans.org/maven2' }
 }
 
 dependencies {
-    compile 'com.alibaba:fastjson:1.2.71'
-    compile 'com.squareup.okhttp3:okhttp:4.7.2'
+    api platform('io.jenkins.tools.bom:bom-2.387.x:2102.v854b_fec19c92')
+    implementation 'org.jenkins-ci.plugins:structs'
+    implementation 'org.jenkins-ci.plugins.workflow:workflow-basic-steps'
+    implementation 'com.alibaba:fastjson:2.0.32'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
 }
