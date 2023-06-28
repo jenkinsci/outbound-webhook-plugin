@@ -10,16 +10,11 @@ import okhttp3.*;
 
 import javax.annotation.Nonnull;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 @Extension
 public class JobListener extends RunListener<AbstractBuild> {
 
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
-    
-    private static final Logger log = LoggerFactory.getLogger(JobListener.class);
 
     public JobListener() {
         super(AbstractBuild.class);
@@ -38,7 +33,7 @@ public class JobListener extends RunListener<AbstractBuild> {
         String buildName = build.getDisplayName();
         String buildVars = build.getBuildVariables().toString();
         NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, "start");
-        httpPost(webHookUrl, event);
+        httpPost(webHookUrl, event, listener);
     }
 
     @Override
@@ -59,15 +54,15 @@ public class JobListener extends RunListener<AbstractBuild> {
         NotificationEvent event = new NotificationEvent(projectName, buildName, buildUrl, buildVars, "");
         if (publisher.onSuccess && result.equals(Result.SUCCESS)) {
             event.event = "success";
-            httpPost(webHookUrl, event);
+            httpPost(webHookUrl, event, listener);
         }
         if (publisher.onFailure && result.equals(Result.FAILURE)) {
             event.event = "failure";
-            httpPost(webHookUrl, event);
+            httpPost(webHookUrl, event, listener);
         }
         if (publisher.onUnstable && result.equals(Result.UNSTABLE)) {
             event.event = "unstable";
-            httpPost(webHookUrl, event);
+            httpPost(webHookUrl, event, listener);
         }
     }
 
@@ -80,15 +75,20 @@ public class JobListener extends RunListener<AbstractBuild> {
         return null;
     }
 
-    private void httpPost(String url, Object object) {
+    private void httpPost(String url, Object object, @Nonnull TaskListener listener) {
         String jsonString = JSON.toJSONString(object);
         RequestBody body = RequestBody.create(JSON_MEDIA_TYPE, jsonString);
         Request request = new Request.Builder().url(url).post(body).build();
         try {
             Response response = client.newCall(request).execute();
-            log.debug("Invocation of webhook {} successful", url);
+            if (response.isSuccessful()) {
+                listener.getLogger().println("Invocation of webhook " + url + " successful");
+            } else {
+                listener.getLogger().println("Invocation of webhook " + url + " failed: HTTP " + response.code() + " " + response.message());
+            }
+            response.close();
         } catch (Exception e) {
-        	log.info("Invocation of webhook {} failed", url, e);
+            listener.getLogger().println("Invocation of webhook " + url + " failed: " + e);
         }
     }
 }
